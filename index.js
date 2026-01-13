@@ -43,3 +43,12 @@ delBtn.addEventListener('dblclick', function(){
     render(myLeads)
 })
 
+
+tabBtn.addEventListener('click', function(){
+    chrome.tabs.query({"active": true, "lastFocusedWindow": true}, function (tabs) {
+
+        myLeads.push(tabs[0].url)
+        localStorage.setItem("myLeads", JSON.stringify(myLeads))
+        render(myLeads)
+});
+})
