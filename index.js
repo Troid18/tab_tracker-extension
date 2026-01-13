@@ -17,7 +17,7 @@ function render(leads){
     for(let i = 0; i < leads.length; i++){
         data += `<li> 
         
-                <a href='${leads[i]}' >
+                <a href='${leads[i]}' target= "_blank" >
                     ${leads[i]}
                </a>     
             </li>`
