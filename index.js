@@ -11,15 +11,6 @@ if (getLeads){
     render(myLeads)
 }
 
-
-saveBtn.addEventListener("click", function(){
-    myLeads.push(inputEl.value)
-    inputEl.value = ''
-    localStorage.setItem('myLeads', JSON.stringify(myLeads))
-    render(myLeads)
-})
-
-
 function render(leads){
     let data = ''
 
@@ -34,3 +25,21 @@ function render(leads){
 
     ulEl.innerHTML = data
 }
+
+
+
+
+saveBtn.addEventListener("click", function(){
+    myLeads.push(inputEl.value)
+    inputEl.value = ''
+    localStorage.setItem('myLeads', JSON.stringify(myLeads))
+    render(myLeads)
+})
+
+
+delBtn.addEventListener('dblclick', function(){
+    localStorage.clear()
+    myLeads = []
+    render(myLeads)
+})
+
