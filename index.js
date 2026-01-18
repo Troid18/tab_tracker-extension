@@ -1,14 +1,3 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js"
-import { getDatabase } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js"
-const firebaseConfig = {
-
-    databaseUrl: "https://tab-tracker-app-a3c14-default-rtdb.europe-west1.firebasedatabase.app/"
-
-}
-
-const app = initializeApp(firebaseConfig)
-const database = getDatabase(app)
-
 let myLeads = []
 const saveBtn = document.getElementById('save-btn')
 const tabBtn = document.getElementById('tab-btn')
