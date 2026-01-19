@@ -1,65 +1,88 @@
-# Tab Tracker Extension
+# Tab Tracker Project
 
-A lightweight Chrome browser extension that helps you save and manage URLs for later access. Whether you want to bookmark important links or save your current active tab, Tab Tracker makes it easy to organize and retrieve them.
-
-## Features
-
-- **Save URLs Manually**: Type or paste URLs directly into the input field and save them with the "SAVE INPUT" button
-- **Save Current Tab**: Click "SAVE TAB" to instantly save the URL of your currently active browser tab
-- **Persistent Storage**: All saved URLs are stored in your browser's local storage, so they persist between sessions
-- **Clickable Links**: Each saved URL is displayed as a clickable link that opens in a new tab
-- **Quick Delete**: Double-click the "DELETE ALL" button to clear all saved URLs at once
-- **Clean Interface**: Simple and intuitive popup UI with a responsive design
-
-## How to Use
-
-1. **Save a Manual URL**: 
-   - Enter a URL in the text input field
-   - Click "SAVE INPUT"
-   - The URL will appear in your list
-
-2. **Save Current Tab**:
-   - Click the "SAVE TAB" button
-   - The active tab's URL is automatically saved to your list
-
-3. **Access Saved URLs**:
-   - Click any saved URL in the list to open it in a new tab
-
-4. **Delete All URLs**:
-   - Double-click "DELETE ALL" to clear the entire list
-
-## Technical Details
-
-- **Manifest Version**: 3 (Chrome Extension Manifest v3)
-- **Permissions**: Requires `tabs` permission to access active tab information
-- **Storage**: Uses browser's `localStorage` API for persistence
-- **Technologies**: HTML5, CSS3, Vanilla JavaScript
-- **Font**: Google Fonts (Roboto)
+This repository contains two implementations of a URL tracking tool: a **Chrome Browser Extension** and a **Web Application**. Both serve the purpose of helping you save and manage URLs, but they operate differently.
 
 ## Project Structure
 
 ```
 tab_tracker-extension/
-├── manifest.json      # Extension configuration
-├── index.html         # Popup UI structure
-├── index.css          # Styling
-├── index.js           # Core functionality
-├── README.md          # This file
-└── icon.png           # Extension icon (referenced in manifest)
+├── extension/         # Chrome Extension (LocalStorage)
+│   ├── manifest.json
+│   ├── index.html
+│   ├── index.js
+│   └── index.css
+├── web-app/           # Web App (Firebase Realtime Database)
+│   ├── app.html
+│   ├── app.js
+│   ├── app.css
+│   └── config.js
+└── README.md
 ```
 
-## Installation
+---
 
-1. Clone or download this repository
-2. Open Chrome and navigate to `chrome://extensions/`
-3. Enable "Developer mode" (top-right toggle)
-4. Click "Load unpacked"
-5. Select the extension folder
-6. The Tab Tracker icon will appear in your browser toolbar
+## 1. Chrome Extension
 
-## Version
+Located in the `extension/` directory.
 
-Current Version: 1.0
+A lightweight Chrome browser extension that helps you save and manage URLs for later access within your browser.
+
+### Features
+- **Save URLs Manually**: Type or paste URLs directly.
+- **Save Current Tab**: Instantly save the URL of your active browser tab.
+- **Persistent Storage**: Uses the browser's `localStorage` API. Data stays in your browser.
+- **Clickable Links**: Opens saved URLs in a new tab.
+- **Quick Delete**: Double-click "DELETE ALL" to clear the list.
+
+### Installation
+1. Clone or download this repository.
+2. Open Chrome and navigate to `chrome://extensions/`.
+3. Enable "Developer mode" (top-right toggle).
+4. Click "Load unpacked".
+5. Select the `extension` folder from this repository.
+6. The Tab Tracker icon will appear in your browser toolbar.
+
+### Technical Details
+- **Manifest Version**: 3
+- **Permissions**: `tabs` (to access active tab URL)
+- **Tech Stack**: HTML, CSS, JavaScript, LocalStorage
+
+---
+
+## 2. Web Application
+
+Located in the `web-app/` directory.
+
+A web-based version of the tracker that syncs data to the cloud using Firebase 12.8.0.
+
+### Features
+- **Cloud Sync**: Saves URLs to a Firebase Realtime Database ("Leads" node).
+- **Cross-Device Access**: Access your saved links from any device running the web app (provided it shares the configuration).
+- **Real-time Updates**: The list updates instantly when items are added or removed.
+
+### Setup
+1. Navigate to the `web-app` directory.
+2. Ensure you have a valid `config.js` file exporting your `firebaseConfig` object.
+   ```javascript
+   // config.js example
+   export const firebaseConfig = {
+       apiKey: "...",
+       authDomain: "...",
+       databaseURL: "...",
+       projectId: "...",
+       storageBucket: "...",
+       messagingSenderId: "...",
+       appId: "..."
+   };
+   ```
+3. Open `app.html` in a modern browser (or serve it using a local server like Live Server).
+
+### Technical Details
+- **Tech Stack**: HTML, CSS, JavaScript (ES Modules)
+- **Backend Service**: Firebase Realtime Database
+- **Dependencies**: Firebase JS SDK (imported via CDN)
+
+---
 
 ## License
 
